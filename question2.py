@@ -11,13 +11,13 @@ import matplotlib.pyplot as plt
 
 class AutoTradeModel:
     def __init__(self):
-        # --- Model Parameters (Calibrated from Paper Data) ---
+        # --- Model Parameters (Calibrated from Data) ---
         self.sigma = 4.0  # Elasticity of substitution (Paper Section 3.1)
         self.baseline_tariff = 0.025  # 2.5% Baseline tariff
         self.shock_tariff = 0.20  # 20% Reciprocal tariff (Hypothetical scenario)
         self.shock_year = 2025  # Year policy is implemented
 
-        # Initial Volumes (in Million Units, approximated from Figure 1 & 4)
+        # Initial Volumes (in Million Units, approximated from Figure 1&4)
         self.init_import_vol = 1.62  # Q_JP: Direct imports
         self.init_fdi_vol = 1.30  # Q_US_jp: Japanese cars made in USA (Base capacity)
 
@@ -163,4 +163,5 @@ if __name__ == "__main__":
     print("2. Medium Term (2026-2028): FDI ramps up as firms execute Non-Tariff Strategies.")
     print("3. Long Term (>2029): Supply structure inverts. 'Made in USA' by Japanese firms dominates.")
 
+    
     plot_results(df_results)
