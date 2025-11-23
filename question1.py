@@ -5,12 +5,12 @@ import pandas as pd
 '''Question 1 Simulation'''
 
 # 1. Model Parameters
-# Price elasticity is typically negative and large for commodities.
-# Capacity elasticity is positive, reflecting supply reliability.
+# Price elasticity is typically negative and large for commodities
+# Capacity elasticity is positive, reflecting supply reliability
 BETA_PRICE = -2.5  # Price Sensitivity
 BETA_CAP = 1.2  # Capacity/Reliability Weight
 
-# Base Preference (Alpha): Brazil slightly favored, Argentina lower due to volatility.
+# Base Preference (Alpha): Brazil slightly favored, Argentina lower due to volatility
 ALPHAS = {'USA': 0.0, 'Brazil': 0.5, 'Argentina': -0.5}
 
 # Baseline Data Snapshot (Simulated Monthly Data)
@@ -53,7 +53,7 @@ def run_simulation(scenario_name, tariff_dict):
 
         temp_data.append((country, p_final, u, exp_u))
 
-    # 2. Calculate Probability / Market Share
+    # 2.Calculate Probability / Market Share
     # S_i = exp(U_i) / sum(exp(U_j))
     for country, p_final, u, exp_u in temp_data:
         share = exp_u / sum_exp_utility
@@ -79,7 +79,7 @@ df_base = run_simulation("Baseline (Status Quo)", tariffs_baseline)
 tariffs_war = {'USA': 0.25, 'Brazil': 0.03, 'Argentina': 0.03}
 df_war = run_simulation("Trade War (USA Tariff -> 25%)", tariffs_war)
 
-# 3. Visualization ---
+# 3.Visualization
 plt.rcParams['axes.unicode_minus'] = False
 
 fig, ax = plt.subplots(figsize=(10, 6))
@@ -106,7 +106,6 @@ def autolabel(rects):
                     xytext=(0, 3), textcoords="offset points",
                     ha='center', va='bottom', fontsize=9)
 
-
 autolabel(rects1)
 autolabel(rects2)
 plt.tight_layout()
@@ -118,4 +117,5 @@ us_share_war = df_war.loc['USA', 'Share']
 us_change = (us_share_war - us_share_base) / us_share_base
 
 print(f"\n[Conclusion] USA Market Share Change: {us_change:.1%}")
+
 print("Model simulation complete.")
