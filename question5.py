@@ -55,7 +55,7 @@ class MDMEM_Simulation:
         # Manufacturing Cost Index (100 = Baseline)
         cost_index = np.linspace(100, 140, 100)
 
-        # Scenario A: Tariffs Only -> Profit-driven Reshoring
+        # Scenario A: Tariffs Only >> Profit-driven Reshoring
         # Firms pass costs to consumers, reshoring rises slightly
         reshoring_A = 100 + 0.08 * (cost_index - 100)
 
@@ -97,7 +97,7 @@ class MDMEM_Simulation:
         fig = plt.figure(figsize=(15, 10))
         plt.suptitle('Question 5: Multi-Sector Dynamic Equilibrium Assessment (MD-MEM)', fontsize=16, weight='bold')
 
-        # Subplot 1: Stagflation (Fig 10)
+        # Subplot 1: Stagflation (Fig10)
         ax1 = fig.add_subplot(2, 2, 1)
         ax1.plot(df_macro['Quarter'], df_macro['CPI_Inflation'], 'r-s', label='CPI Inflation (%)', linewidth=2)
         ax1.plot(df_macro['Quarter'], df_macro['Real_GDP_Growth'], 'b-o', label='Real GDP Growth (%)', linewidth=2)
@@ -109,7 +109,7 @@ class MDMEM_Simulation:
         ax1.legend()
         ax1.grid(True, alpha=0.3)
 
-        # Subplot 2: Financial Volatility (Fig 11)
+        # Subplot 2: Financial Volatility (Fig11)
         ax2 = fig.add_subplot(2, 2, 2)
         colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
         bars = ax2.bar(df_finance['Asset'], df_finance['Change_Pct'], color=colors, alpha=0.8)
@@ -120,7 +120,7 @@ class MDMEM_Simulation:
         ax2.set_ylim(-15, 30)
         ax2.grid(axis='y', alpha=0.3)
 
-        # Subplot 3: Reshoring Frontier (Fig 12)
+        # Subplot 3: Reshoring Frontier (Fig12)
         ax3 = fig.add_subplot(2, 1, 2)
         ax3.plot(cost_x, res_a, 'g--', linewidth=2, label='Scenario A: Tariffs Only (Profit-driven)')
         ax3.plot(cost_x, res_b, 'r-', linewidth=3, label='Scenario B: With Countermeasures (Supply Chain Broken)')
@@ -143,4 +143,5 @@ class MDMEM_Simulation:
 
 if __name__ == "__main__":
     sim = MDMEM_Simulation()
+
     sim.run_and_visualize()
